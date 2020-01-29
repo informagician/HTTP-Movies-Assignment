@@ -24,9 +24,19 @@ const UpdateMovie = () => {
         .catch(err => console.log(err))
     }
 
-    const handleChange = () => {
+    const handleChange = index => e => {
+        e.persist();
+        let newArr = [...movie.stars]
+        newArr[index] = e.target.value
 
+        console.log(newArr)
+        setMovie({
+            ...movie,
+            stars: [...newArr],
+            [e.target.name] : e.target.value
+        })
     }
+    
     return (
         movie != undefined
         ? (
@@ -35,10 +45,11 @@ const UpdateMovie = () => {
             <label>Director:<input type="text" value={movie.director} onChange={handleChange} name="director"/></label>
             <label>Score:<input type="text" value={movie.metascore} onChange={handleChange} name="metascore"/></label>
             <label>Stars:
-                {movie.stars.map(item => (
-                    <input type="text" value={item} onChange={handleChange} name="star"/>
+                {movie.stars.map((item, index) => (
+                    <li key={item}>
+                        <input type="text" value={item} onChange={handleChange(index)} name={index}/>
+                    </li>
                 ))}
-                
             </label>
             <button onClick={handleUpdate}>Update</button>
         </main>
