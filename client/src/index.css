@@ -61,11 +61,11 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
-.save-button:hover {
+.save-button:hover, .edit-button:hover {
   background-color: green;
   color: white;
+  cursor: pointer;
 }
-
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -74,4 +74,16 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.edit-button {
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+label,input {
+  display: block;
 }
