@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const UpdateMovie = () => {
+const UpdateMovie = props => {
 
     const [ movie, setMovie ] = useState();
 
@@ -19,15 +19,19 @@ const UpdateMovie = () => {
     const handleUpdate = e => {
         e.preventDefault();
 
-        Axios.put(`http://localhost:5000/`,)
-        .then(res => console.log(res))
+        Axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+        .then(res => {
+            //props.set
+            props.history.push(`/movies/${id}`)
+        })
         .catch(err => console.log(err))
     }
 
-    const handleChange = index => e => {
-        e.persist();
+    const handleChange = e => {
+        //e.persist();
+        //e.preventDefault();
         let newArr = [...movie.stars]
-        newArr[index] = e.target.value
+        newArr[e.target.name] = e.target.value
 
         console.log(newArr)
         setMovie({
@@ -45,11 +49,9 @@ const UpdateMovie = () => {
             <label>Director:<input type="text" value={movie.director} onChange={handleChange} name="director"/></label>
             <label>Score:<input type="text" value={movie.metascore} onChange={handleChange} name="metascore"/></label>
             <label>Stars:
-                {movie.stars.map((item, index) => (
-                    <li key={item}>
-                        <input type="text" value={item} onChange={handleChange(index)} name={index}/>
-                    </li>
-                ))}
+                {movie.stars.map((item, index) => 
+                    <input key={index} type="text" value={movie.stars[index]} onChange={handleChange} name={index}/>
+                )}
             </label>
             <button onClick={handleUpdate}>Update</button>
         </main>
