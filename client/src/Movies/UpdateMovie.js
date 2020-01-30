@@ -14,7 +14,7 @@ const UpdateMovie = props => {
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(res => setMovie({ ...res.data }))
       .catch(err => console.log(err.response));
-    }, [id,])
+    }, [id])
 
     const handleUpdate = e => {
         e.preventDefault();
@@ -37,7 +37,7 @@ const UpdateMovie = props => {
         setMovie({
             ...movie,
             stars: [...newArr],
-            [e.target.name] : e.target.value
+            [isNaN(e.target.name) && e.target.name] : isNaN(e.target.name) && e.target.value
         })
     }
     
@@ -50,7 +50,7 @@ const UpdateMovie = props => {
             <label>Score:<input type="text" value={movie.metascore} onChange={handleChange} name="metascore"/></label>
             <label>Stars:
                 {movie.stars.map((item, index) => 
-                    <input key={index} type="text" value={movie.stars[index]} onChange={handleChange} name={index}/>
+                    <input key={index} type="text" value={item} onChange={handleChange} name={index}/>
                 )}
             </label>
             <button onClick={handleUpdate}>Update</button>

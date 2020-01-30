@@ -61,7 +61,7 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
-.save-button:hover, .edit-button:hover {
+.save-button:hover, .edit-button:hover, .delete-button:hover {
   background-color: green;
   color: white;
   cursor: pointer;
@@ -78,7 +78,7 @@ body {
 
 .edit-button {
   position: absolute;
-  top: 70px;
+  top: 65px;
   right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
@@ -86,4 +86,13 @@ body {
 }
 label,input {
   display: block;
+}
+
+.delete-button {
+  position: absolute;
+  top: 105px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
 }
