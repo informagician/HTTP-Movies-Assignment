@@ -42,7 +42,7 @@ const UpdateMovie = props => {
     }
     
     return (
-        movie != undefined
+        movie !== undefined
         ? (
         <main>
             <label>Title:<input type="text" value={movie.title} onChange={handleChange} name="title" /></label>
