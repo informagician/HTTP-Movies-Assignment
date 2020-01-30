@@ -70,6 +70,9 @@ body {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
+.home-button a {
+  margin-right: 10px;
+}
 
 .movie-warning {
   color: red;
